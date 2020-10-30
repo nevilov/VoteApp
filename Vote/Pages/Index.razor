@@ -1,7 +1,18 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<div class="top_bar_voting">
+    <h1>Vote app</h1>
+    <button type="button" class="btn btn-success" @onclick="OpenVoting">Успех</button>
+</div>
 
-Welcome to your new app.
+@code{
+    public void OpenVoting() {
+       
+    }
+
+
+}
+
+
 
 <SurveyPrompt Title="How is Blazor working for you?" />
