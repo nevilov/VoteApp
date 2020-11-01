@@ -1,0 +1,46 @@
+﻿@page "/CreateVoting"
+
+<div>
+    <h2>New voting</h2>
+    <div class="input-group mb-3">
+        <div class="create_voting">
+            <div class="input voting">
+                <input class="form-control"
+                       @bind="titleVoting"
+                       type="text"                 
+                       placeholder="Title"
+                       aria-label="Example text with button addon"
+                       aria-describedby="button-addon1"
+                       maxlength="50"
+                       />
+            </div>
+            <div class="input voting">
+                <textarea class="form-control"
+                       @bind="descriptionVoting"
+                       id="exampleFormControlTextarea1"
+                       placeholder="Description"
+                       rows="3"
+                       maxlength="250"/>
+            </div>
+            <div class="input voting">
+                <input class="form-control"
+                       @bind-value="dateVoting"
+                       placeholder="Start Date"
+                       min="2020-01-01"
+                       max="2200-01-01"
+                       type="text"/>
+            </div>
+        </div>
+    </div>
+</div>
+<p>Значение: @dateVoting</p>
+
+@code {
+    public string titleVoting { get; set; }
+    public string descriptionVoting { get; set; }
+    public DateTime dateVoting { get; set; }
+
+
+
+
+}
