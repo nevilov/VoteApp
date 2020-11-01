@@ -1,12 +1,12 @@
 ﻿@page "/"
-
+@inject NavigationManager NavigationManager
 <div class="main_voting">
     <button type="button" class="btn btn-success" @onclick="OpenVoting">Create vote</button>
 </div>
 
 @code{
     public void OpenVoting() {
-       
+        NavigationManager.NavigateTo("none");
     }
 
 
