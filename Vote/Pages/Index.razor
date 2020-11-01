@@ -1,7 +1,17 @@
 ﻿@page "/"
+@inject NavigationManager NavigationManager
+<div class="main_voting">
+    <button type="button" class="btn btn-success" @onclick="OpenVoting">Create vote</button>
+</div>
 
-<h1>Hello, world!</h1>
+@code{
+    public void OpenVoting() {
+        NavigationManager.NavigateTo("none");
+    }
 
-Welcome to your new app.
+
+}
+
+
 
 <SurveyPrompt Title="How is Blazor working for you?" />
