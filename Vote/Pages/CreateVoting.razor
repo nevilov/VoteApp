@@ -22,7 +22,7 @@
             </div>
             <div class="input voting">
                 <input class="form-control"
-                       @bind-value="start_dateVoting"
+                       @bind="start_dateVoting"
                        placeholder="Start Date"
                        min="2020-01-01"
                        max="2200-01-01"
@@ -30,7 +30,7 @@
             </div>
             <div class="input voting">
                 <input class="form-control"
-                       @bind-value="end_dateVoting"
+                       @bind="end_dateVoting"
                        placeholder="End Date"
                        min="2020-01-01"
                        max="2200-01-01"
@@ -63,8 +63,8 @@
 @code {
     public string titleVoting { get; set; }
     public string descriptionVoting { get; set; }
-    public DateTime start_dateVoting { get; set; }
-    public DateTime end_dateVoting { get; set; }
+    public DateTime start_dateVoting { get; set; } = DateTime.Now;
+    public DateTime end_dateVoting { get; set; } = DateTime.Now;
 
 
 
