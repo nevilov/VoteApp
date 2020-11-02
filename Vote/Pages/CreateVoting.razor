@@ -7,38 +7,64 @@
             <div class="input voting">
                 <input class="form-control"
                        @bind="titleVoting"
-                       type="text"                 
+                       type="text"
                        placeholder="Title"
-                       aria-label="Example text with button addon"
                        aria-describedby="button-addon1"
-                       maxlength="50"
-                       />
+                       maxlength="50" />
             </div>
             <div class="input voting">
                 <textarea class="form-control"
-                       @bind="descriptionVoting"
-                       id="exampleFormControlTextarea1"
-                       placeholder="Description"
-                       rows="3"
-                       maxlength="250"/>
+                          @bind="descriptionVoting"
+                          id="exampleFormControlTextarea1"
+                          placeholder="Description"
+                          rows="3"
+                          maxlength="250" />
             </div>
             <div class="input voting">
                 <input class="form-control"
-                       @bind-value="dateVoting"
+                       @bind-value="start_dateVoting"
                        placeholder="Start Date"
                        min="2020-01-01"
                        max="2200-01-01"
-                       type="text"/>
+                       type="date" />
+            </div>
+            <div class="input voting">
+                <input class="form-control"
+                       @bind-value="end_dateVoting"
+                       placeholder="End Date"
+                       min="2020-01-01"
+                       max="2200-01-01"
+                       type="date" />
+            </div>
+            <div class="input voting">
+                <input class="form-control"
+                       type="text"
+                       placeholder="Voting Option"
+                       maxlength="50" />
+            </div>
+            <div class="input voting"> 
+                <div class="option voting">
+                    <input class="form-control"
+                           type="text"
+                           placeholder="Voting Option"
+                           maxlength="50" />
+                    <button type="button"
+                            style="margin-left:10px; width: 25%;"
+                            class="btn btn-outline-secondary">+ Add option</button>
+                </div>
             </div>
         </div>
     </div>
+    <div class="create_voting button">
+        <button type="button" class="btn btn-success">Save</button>
+    </div>
 </div>
-<p>Значение: @dateVoting</p>
 
 @code {
     public string titleVoting { get; set; }
     public string descriptionVoting { get; set; }
-    public DateTime dateVoting { get; set; }
+    public DateTime start_dateVoting { get; set; }
+    public DateTime end_dateVoting { get; set; }
 
 
 
