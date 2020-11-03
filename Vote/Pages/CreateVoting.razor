@@ -42,7 +42,31 @@
                        placeholder="Voting Option"
                        maxlength="50" />
             </div>
-            <div class="input voting"> 
+            @if (haveOption) {
+                <div class="input voting">
+                    <input class="form-control"
+                           type="text"
+                           placeholder="Voting Option"
+                           maxlength="50" />
+                </div>
+            }
+            @if (haveOption) {
+                <div class="input voting">
+                    <input class="form-control"
+                           type="text"
+                           placeholder="Voting Option"
+                           maxlength="50" />
+                </div>
+            }
+            @if (haveOption) {
+                <div class="input voting">
+                    <input class="form-control"
+                           type="text"
+                           placeholder="Voting Option"
+                           maxlength="50" />
+                </div>
+            }
+            <div class="input voting">
                 <div class="option voting">
                     <input class="form-control"
                            type="text"
@@ -50,9 +74,14 @@
                            maxlength="50" />
                     <button type="button"
                             style="margin-left:10px; width: 25%;"
-                            class="btn btn-outline-secondary">+ Add option</button>
+                            @onclick="AddOption"
+                            class="@propertyOptionButton">
+                        @additionalOption
+                    </button>
                 </div>
             </div>
+
+
         </div>
     </div>
     <div class="create_voting button">
@@ -65,6 +94,27 @@
     public string descriptionVoting { get; set; }
     public DateTime start_dateVoting { get; set; } = DateTime.Now;
     public DateTime end_dateVoting { get; set; } = DateTime.Now;
+
+    public bool haveOption = false;
+    public string additionalOption= "+ Add option";
+    public string propertyOptionButton = "btn btn-outline-secondary";
+
+    public void AddOption() {
+        if (haveOption) {
+            haveOption = false;
+            additionalOption = "+ Add option";
+            propertyOptionButton = "btn btn-outline-secondary";
+        }
+        else {
+            haveOption = true;
+            additionalOption = "Hide option";
+            propertyOptionButton = "btn btn-outline-danger";
+
+        }
+    }
+
+
+    public IList<OptionVoting> optionVoting = new List<OptionVoting>();
 
 
 
