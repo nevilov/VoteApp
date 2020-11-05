@@ -158,13 +158,13 @@ app {
     width: 40rem;
 }
 
-.option.voting {
-    display: flex;
-}
 
-create_voting.button {
-    display: block;
-    margin: 10px;
+
+.create.voting.button {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    
 }
 
 

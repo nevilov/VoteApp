@@ -9,21 +9,26 @@ namespace Vote
     public class OptionVoting
     {
         [Required]
-        public string titleVoting { get; set; }
+        public string TitleVoting { get; set; }
 
         [Required]
-        public string descriptionVoting { get; set; }
+        public string DescriptionVoting { get; set; }
 
         [Required]
-        public DateTime start_dateVoting { get; set; } = DateTime.Now;
+        public DateTime Start_dateVoting { get; set; } = DateTime.Now;
 
         [Required]
-        public DateTime end_dateVoting { get; set; } = DateTime.Now;
+        public DateTime End_dateVoting { get; set; } = DateTime.Now;
 
         public bool haveOption = false;
         public string additionalOption = "+ Add option";
         public string propertyOptionButton = "btn btn-outline-secondary";
 
+
+        public void Submit() {
+            //Делаю вид, что отправляю данные на сервер
+            //Но нет
+        }
 
     }
 }
