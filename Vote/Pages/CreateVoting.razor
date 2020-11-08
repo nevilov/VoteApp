@@ -44,79 +44,102 @@
                            type="date" />
                 </div>
                 <div class="input voting">
-
                     <input class="form-control"
                            type="text"
-                           @bind="itemOption"
+                           @bind="listOptions[0]"
                            placeholder="Voting Option"
                            maxlength="50" />
-
-
                 </div>
-                @foreach (var option in listOptions) {
+                @if (optionCount > 1) {
                     <div class="input voting">
                         <input class="form-control"
                                type="text"
-                               @bind="itemOption"
+                               @bind="listOptions[1]"
                                placeholder="Voting Option"
                                maxlength="50" />
                     </div>
                 }
-                <div class="AddOption button">
-                    <button type="button"
-                            style="margin-left:10px; width: 25%;"
-                            @onclick="AddOption"
-                            class="@Options.propertyOptionButton">
-                        @Options.additionalOption
-                    </button>
-                </div>
+                @if (optionCount > 2) {
+                    <div class="input voting">
+                        <input class="form-control"
+                               type="text"
+                               @bind="listOptions[2]"
+                               placeholder="Voting Option"
+                               maxlength="50" />
+                    </div>
+                }
+                @if (optionCount > 3) {
+                    <div class="input voting">
+                        <input class="form-control"
+                               type="text"
+                               @bind="listOptions[3]"
+                               placeholder="Voting Option"
+                               maxlength="50" />
+                    </div>
+                }
+                @if (optionCount > 4) {
+                    <div class="input voting">
+                        <input class="form-control"
+                               type="text"
+                               @bind="listOptions[4]"
+                               placeholder="Voting Option"
+                               maxlength="50" />
+                    </div>
+                }
+
+
+            <div class="Option button">
+                <button type="button"
+                        style="margin-left:10px; width: 25%;"
+                        @onclick="BtnAddOption"
+                        class="btn btn-outline-secondary">
+                    Add Option
+                </button>
+
+                @*<button type="button"
+                        style="margin-left:10px; width: 25%;"
+                        @onclick="BtnAddOption"
+                        class="btn btn-outline-danger">
+                    Delete Option
+                </button>*@
+
+            </div>
                 <div class="create voting button">
                     <button type="submit" class="btn btn-success" onclick="Options.Submit" style="font-size: 25px;">Save</button>
                 </div>
             </div>
-        </div>
+                </div>
     </EditForm>
 </div>
 
+
 @code {
     private OptionVoting Options = new OptionVoting();
-    private IList<AddOptions> listOptions = new List<AddOptions>();
+    public string[] listOptions = new string[5];
 
     public string StatusMessage;
     public string StatusClass;
+
     protected void HandleValidSubmit() {
         StatusClass = "alert-info";
         StatusMessage = DateTime.Now + " HandleValid submit";
     }
+
     protected void HandleInValidSubmit() {
         StatusClass = "alert-info";
         StatusMessage = DateTime.Now + " HandleInValid submit";
     }
 
-    public string itemOption { get; set; }
-    public void AddOption() {
+   
 
-        if (!string.IsNullOrWhiteSpace(itemOption)) {
-            listOptions.Add(new AddOptions { Option = itemOption });
-            itemOption = string.Empty;
-        }
+    public int optionCount = 1;
+    public void BtnAddOption() {
+        optionCount++;
 
 
-
-        //if (Options.haveOption) {
-        //    Options.haveOption = false;
-        //    Options.additionalOption = "+ Add option";
-        //    Options.propertyOptionButton = "btn btn-outline-secondary";
-        //} else {
-        //    Options.haveOption = true;
-        //    Options.additionalOption = "Hide option";
-        //    Options.propertyOptionButton = "btn btn-outline-danger";
-        //}
+        if (optionCount > 10)
+            optionCount = 5;
     }
-
-
-    // public IList<OptionVoting> optionVoting = new List<OptionVoting>();
-
 
 
 

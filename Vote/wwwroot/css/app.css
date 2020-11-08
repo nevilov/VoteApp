@@ -146,6 +146,10 @@ app {
     justify-content: flex-end;
 }
 
+
+.top-row.px-4 {
+    z-index: 1;
+}
 /*Voting homepage*/
 .main_voting {
     display: flex;
@@ -164,7 +168,6 @@ app {
     display: flex;
     justify-content: center;
     margin-top: 40px;
-    
 }
 
 

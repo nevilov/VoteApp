@@ -14,15 +14,12 @@ namespace Vote
         [Required]
         public string DescriptionVoting { get; set; }
 
-        [Required]
         public DateTime Start_dateVoting { get; set; } = DateTime.Now;
 
-        [Required]
         public DateTime End_dateVoting { get; set; } = DateTime.Now;
 
         public bool haveOption = false;
-        public string additionalOption = "+ Add option";
-        public string propertyOptionButton = "btn btn-outline-secondary";
+
 
 
         public void Submit() {
