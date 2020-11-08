@@ -46,7 +46,7 @@ app {
         }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    background-image: linear-gradient(180deg, rgb(34 45 36) 0%, #ffa36c 70%);
 }
 
     .sidebar .top-row {
@@ -146,10 +146,30 @@ app {
     justify-content: flex-end;
 }
 
+
+.top-row.px-4 {
+    z-index: 1;
+}
 /*Voting homepage*/
 .main_voting {
     display: flex;
 }
+
+/*CreateVoting page*/
+.input.voting {
+    margin: 15px 10px 15px 10px;
+    position: relative;
+    width: 40rem;
+}
+
+
+
+.create.voting.button {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
 
 
 
