@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Vote
+namespace Vote.Models
 {
     public class OptionVoting
     {
@@ -19,13 +19,5 @@ namespace Vote
         public DateTime End_dateVoting { get; set; } = DateTime.Now;
 
         public bool haveOption = false;
-
-
-
-        public void Submit() {
-            //Делаю вид, что отправляю данные на сервер
-            //Но нет
-        }
-
     }
 }
