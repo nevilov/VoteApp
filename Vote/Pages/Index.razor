@@ -7,7 +7,7 @@
     <div class="main_voting">
         <button type="button" class="btn btn-success" @onclick="OpenVoting">Create vote</button>
     </div>
-    <div class="vote info" @onclick ="Vote Info">
+    <div class="vote info" @onclick ="VoteInfo">
         @foreach (var vote in votings) {
             <div class="container">
                 <div class="row">
@@ -30,6 +30,10 @@
 @code{
     public void OpenVoting() {
         NavigationManager.NavigateTo("CreateVoting");
+    }
+
+    public void VoteInfo() {
+        NavigationManager.NavigateTo("VoteInfo");
     }
 
     private List<Vote.Models.OptionVoting> votings = new List<Models.OptionVoting>();
