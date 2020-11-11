@@ -3,27 +3,29 @@
 @using System.Net.Http
 @inject HttpClient Http
 
-<div class="main_voting">
-    <button type="button" class="btn btn-success" @onclick="OpenVoting">Create vote</button>
-</div>
-
-<div>
-    @foreach (var vote in votings) {
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    Title: @vote.TitleVoting
-                </div>
-                <div class="col-sm">
-                    Desciption: @vote.DescriptionVoting
-                </div>
-                <div class="col-sm">
-                    End Vote: @vote.End_dateVoting
+<div class="main page">
+    <div class="main_voting">
+        <button type="button" class="btn btn-success" @onclick="OpenVoting">Create vote</button>
+    </div>
+    <div class="vote info" @onclick ="Vote Info">
+        @foreach (var vote in votings) {
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        Title: @vote.TitleVoting
+                    </div>
+                    <div class="col-sm">
+                        Desciption: @vote.DescriptionVoting
+                    </div>
+                    <div class="col-sm">
+                        End Vote: @vote.End_dateVoting
+                    </div>
                 </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>
+
 
 @code{
     public void OpenVoting() {

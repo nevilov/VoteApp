@@ -1,6 +1,7 @@
 ﻿@page "/CreateVoting"
 @using System.Net.Http
 @using Vote.Models
+@inject NavigationManager NavigationManager
 @inject HttpClient Http
 
 <div>
@@ -90,27 +91,27 @@
                 }
 
 
-            <div class="Option button">
-                <button type="button"
-                        style="margin-left:10px; width: 25%;"
-                        @onclick="BtnAddOption"
-                        class="btn btn-outline-secondary">
-                    Add Option
-                </button>
+                <div class="Option button">
+                    <button type="button"
+                            style="margin-left:10px; width: 25%;"
+                            @onclick="BtnAddOption"
+                            class="btn btn-outline-secondary">
+                        Add Option
+                    </button>
 
-                @*<button type="button"
-                        style="margin-left:10px; width: 25%;"
-                        @onclick="BtnAddOption"
-                        class="btn btn-outline-danger">
-                    Delete Option
-                </button>*@
+                    @*<button type="button"
+                                style="margin-left:10px; width: 25%;"
+                                @onclick="BtnAddOption"
+                                class="btn btn-outline-danger">
+                            Delete Option
+                        </button>*@
 
-            </div>
+                </div>
                 <div class="create voting button">
-                    <button type="submit" class="btn btn-success" @onclick="SendData" style="font-size: 25px;">Save</button>
+                    <button type="submit" class="btn btn-success" style="font-size: 20px;">Save</button>
                 </div>
             </div>
-                </div>
+        </div>
     </EditForm>
 </div>
 
@@ -122,16 +123,16 @@
     public string StatusMessage;
     public string StatusClass;
 
-    public async Task SendData() {
+ 
+
+    public async Task HandleValidSubmit() {
+        //StatusClass = "alert-info";
+        //StatusMessage = DateTime.Now + " HandleValid submit";
         var result = await Http.PostAsJsonAsync("api/voting/create", Options);
-    }
-
-    protected void HandleValidSubmit() {
-        StatusClass = "alert-info";
-        StatusMessage = DateTime.Now + " HandleValid submit";
+        NavigationManager.NavigateTo("");
 
     }
-    protected void HandleInValidSubmit() {
+    public void HandleInValidSubmit() {
         StatusClass = "alert-info";
         StatusMessage = DateTime.Now + " HandleInValid submit";
     }
@@ -141,10 +142,6 @@
     public int optionCount = 1;
     public void BtnAddOption() {
         optionCount++;
-
-
-        if (optionCount > 10)
-            optionCount = 5;
     }
 
 
