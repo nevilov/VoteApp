@@ -1,17 +1,27 @@
 ﻿@page "/"
 @inject NavigationManager NavigationManager
+@using System.Net.Http
+@inject HttpClient Http
+
 <div class="main_voting">
     <button type="button" class="btn btn-success" @onclick="OpenVoting">Create vote</button>
 </div>
+
+
+@foreach(var vote in votings) {
+    <h1>@vote.TitleVoting</h1>
+    <h1>@vote.DescriptionVoting</h1>
+}
 
 @code{
     public void OpenVoting() {
         NavigationManager.NavigateTo("CreateVoting");
     }
 
+    private List<Vote.Models.OptionVoting> votings = new List<Models.OptionVoting>();
 
+    protected override async Task OnInitializedAsync() {
+        votings = await Http.GetFromJsonAsync<List<Vote.Models.OptionVoting>>("api/voting"); // Получаем данные из севрера
+    }
 }
 
-
-
-<SurveyPrompt Title="How is Blazor working for you?" />

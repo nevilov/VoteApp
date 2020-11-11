@@ -14,7 +14,7 @@ using Microsoft.Extensions.Logging;
 namespace VoteServer
 {
     public class Startup
-    {
+    {  
         public Startup(IConfiguration configuration) {
             Configuration = configuration;
         }
@@ -23,6 +23,7 @@ namespace VoteServer
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
+            services.AddCors();
             services.AddControllers();
         }
 
@@ -35,6 +36,8 @@ namespace VoteServer
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()); // Разрешения. Сревер разрешает общаться с ним
 
             app.UseAuthorization();
 
