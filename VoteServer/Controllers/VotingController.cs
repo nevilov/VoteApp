@@ -12,14 +12,7 @@ namespace VoteServer.Controllers
     [Route("api/[controller]")]
     public class VotingController : ControllerBase
     {
-        private static List<OptionVoting> votings = new List<OptionVoting> {
-            new OptionVoting {
-                TitleVoting = "first"
-            },
-            new OptionVoting {
-                TitleVoting = "sesconbd"
-            },
-        };
+        private static List<OptionVoting> votings = new List<OptionVoting>();
 
         [HttpGet]
         public IEnumerable<OptionVoting> GetAll() {

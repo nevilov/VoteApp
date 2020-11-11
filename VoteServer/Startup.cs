@@ -14,9 +14,7 @@ using Microsoft.Extensions.Logging;
 namespace VoteServer
 {
     public class Startup
-    {
-
-        
+    {  
         public Startup(IConfiguration configuration) {
             Configuration = configuration;
         }
@@ -39,7 +37,7 @@ namespace VoteServer
 
             app.UseRouting();
 
-            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()); // Разрешения. Сревер разрешает обращаться с ним
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()); // Разрешения. Сревер разрешает общаться с ним
 
             app.UseAuthorization();
 

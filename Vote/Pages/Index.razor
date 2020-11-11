@@ -7,8 +7,10 @@
     <button type="button" class="btn btn-success" @onclick="OpenVoting">Create vote</button>
 </div>
 
+
 @foreach(var vote in votings) {
     <h1>@vote.TitleVoting</h1>
+    <h1>@vote.DescriptionVoting</h1>
 }
 
 @code{
