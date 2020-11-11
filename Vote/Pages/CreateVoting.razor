@@ -107,7 +107,7 @@
 
             </div>
                 <div class="create voting button">
-                    <button type="submit" class="btn btn-success" @onclick="HandleValidSubmit" style="font-size: 25px;">Save</button>
+                    <button type="submit" class="btn btn-success" @onclick="SendData" style="font-size: 25px;">Save</button>
                 </div>
             </div>
                 </div>
@@ -118,23 +118,25 @@
 @code {
     private OptionVoting Options = new OptionVoting();
     public string[] listOptions = new string[5];
-    
+
     public string StatusMessage;
     public string StatusClass;
 
-    public async Task HandleValidSubmit() {
-        StatusClass = "alert-info";
-        StatusMessage = DateTime.Now + " HandleValid submit";
-
+    public async Task SendData() {
         var result = await Http.PostAsJsonAsync("api/voting/create", Options);
     }
 
+    protected void HandleValidSubmit() {
+        StatusClass = "alert-info";
+        StatusMessage = DateTime.Now + " HandleValid submit";
+
+    }
     protected void HandleInValidSubmit() {
         StatusClass = "alert-info";
         StatusMessage = DateTime.Now + " HandleInValid submit";
     }
 
-   
+
 
     public int optionCount = 1;
     public void BtnAddOption() {

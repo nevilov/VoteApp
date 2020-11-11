@@ -7,11 +7,23 @@
     <button type="button" class="btn btn-success" @onclick="OpenVoting">Create vote</button>
 </div>
 
-
-@foreach(var vote in votings) {
-    <h1>@vote.TitleVoting</h1>
-    <h1>@vote.DescriptionVoting</h1>
-}
+<div>
+    @foreach (var vote in votings) {
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    Title: @vote.TitleVoting
+                </div>
+                <div class="col-sm">
+                    Desciption: @vote.DescriptionVoting
+                </div>
+                <div class="col-sm">
+                    End Vote: @vote.End_dateVoting
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
 @code{
     public void OpenVoting() {
