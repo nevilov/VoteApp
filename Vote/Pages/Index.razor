@@ -7,24 +7,35 @@
     <div class="main_voting">
         <button type="button" class="btn btn-success" @onclick="OpenVoting">Create vote</button>
     </div>
-    <div class="vote info" @onclick ="VoteInfo">
+    <div class="vote info">
         @foreach (var vote in votings) {
-            <div class="container">
+            <div class="container" @onclick ="VoteInfo">
                 <div class="row">
                     <div class="col-sm">
-                        Title: @vote.TitleVoting
+                        <b>Title:</b> @vote.TitleVoting
                     </div>
                     <div class="col-sm">
-                        Desciption: @vote.DescriptionVoting
+                        <b>Desciption:</b> @vote.DescriptionVoting
                     </div>
                     <div class="col-sm">
-                        End Vote: @vote.End_dateVoting
-                    </div>
+                        <b>End Vote:</b> @vote.End_dateVoting
+</div>
                 </div>
             </div>
         }
     </div>
 </div>
+
+<style>
+    .container {
+        margin: 15px 0 15px 0;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        padding: 10px;
+
+        cursor: pointer;
+    }
+    
+</style>
 
 
 @code{
