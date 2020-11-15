@@ -18,6 +18,6 @@ namespace Vote.Models
 
         public DateTime End_dateVoting { get; set; } = DateTime.Now;
 
-        public bool haveOption = false;
+        public string[] listOptions = new string[5];
     }
 }
