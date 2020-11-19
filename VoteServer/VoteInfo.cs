@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Vote.Models
+namespace VoteServer
 {
-    public class OptionVoting
+    public class VoteInfo
     {
-        [Required]
+       [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       [Key]
+    
         public string TitleVoting { get; set; }
 
-        [Required]
         public string DescriptionVoting { get; set; }
 
         public DateTime Start_dateVoting { get; set; } = DateTime.Now;

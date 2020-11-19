@@ -50,7 +50,7 @@
     private List<Vote.Models.OptionVoting> votings = new List<Models.OptionVoting>();
 
     protected override async Task OnInitializedAsync() {
-        votings = await Http.GetFromJsonAsync<List<Vote.Models.OptionVoting>>("api/voting"); // Получаем данные из севрера
+        votings = await Http.GetFromJsonAsync<List<Vote.Models.OptionVoting>>("https://localhost:5001/api/VoteInfoes"); // Получаем данные из севрера
     }
 }
 

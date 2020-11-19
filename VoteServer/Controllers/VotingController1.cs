@@ -10,7 +10,7 @@ namespace VoteServer.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class VotingController : ControllerBase
+    public class VotingController1 : ControllerBase
     {
         private static List<OptionVoting> votings = new List<OptionVoting>();
 
