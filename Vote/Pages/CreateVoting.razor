@@ -127,7 +127,7 @@
     public async Task HandleValidSubmit() {
         //StatusClass = "alert-info";
         //StatusMessage = DateTime.Now + " HandleValid submit";
-        var result = await Http.PostAsJsonAsync("api/voting/create", Options);
+        var result = await Http.PostAsJsonAsync("https://localhost:5001/api/VoteInfoes", Options);
         NavigationManager.NavigateTo("");
 
     }

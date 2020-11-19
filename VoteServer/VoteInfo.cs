@@ -21,7 +21,5 @@ namespace VoteServer
         public DateTime End_dateVoting { get; set; } = DateTime.Now;
 
         public string[] listOptions = new string[5];
-
-
     }
 }
