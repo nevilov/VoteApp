@@ -4,12 +4,77 @@
 @inject HttpClient Http
 <h3>VoteInfo</h3>
 
+<div class="container">
+    
 
+
+
+    <div class="VoteInfo topbar">
+        <div class="VoteInfo title">
+            MY AWESOME TITLE
+        </div>
+        <div class="VoteInfo title">
+            <div class="VoteInfo link">
+                <MatButton Raised="true" Icon="favorite" Style="color:aqua">Invite</MatButton>
+            </div>
+            <div class="VoteInfo link">
+                <MatButton Raised="true" Icon="favorite">Edit</MatButton>
+            </div>
+            <div class="VoteInfo link">
+                <MatButton Raised="true" Icon="favorite">Delete</MatButton>
+            </div>          
+        </div>
+    </div>
+
+    <div class="VoteInfo details">
+        <div class="VoteInfo column">
+            Left Column
+        </div>
+        <div class="VoteInfo column">
+            Rigth Column
+        </div>
+    </div>
+
+    <div class="VoteInfo chat">
+        CHAT
+    </div>
+
+
+</div>
 
 
 
 <style>
- 
+    .VoteInfo.topbar {
+        display:flex;
+    }
+    .VoteInfo.details {
+        display:flex;
+    }
+    .VoteInfo.column {
+        margin: 15px 30px 15px 0;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        padding: 10px;
+        width: 50%;
+        word-wrap: break-word;
+
+    }
+
+    .VoteInfo.chat {
+        display: flex;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        padding: 10px;
+        margin-right: 30px;
+    }
+
+    .VoteInfo.title {
+        display:flex;
+        width:50%;
+    }
+    .VoteInfo.link {
+        margin-right: 10px;
+    }
+
 </style>
 
 
