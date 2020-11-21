@@ -11,14 +11,15 @@ namespace VoteServer.Migrations
                 name: "VoteInfos",
                 columns: table => new
                 {
-                    TitleVoting = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    DescriptionVoting = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Start_dateVoting = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    End_dateVoting = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<string>(nullable: false),
+                    TitleVoting = table.Column<string>(nullable: true),
+                    DescriptionVoting = table.Column<string>(nullable: true),
+                    Start_dateVoting = table.Column<DateTime>(nullable: false),
+                    End_dateVoting = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VoteInfos", x => x.TitleVoting);
+                    table.PrimaryKey("PK_VoteInfos", x => x.Id);
                 });
         }
 

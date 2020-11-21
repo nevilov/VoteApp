@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Vote.Models
 {
     public class OptionVoting
     {
+        public string voteID { get; set; }
+
         [Required]
         public string TitleVoting { get; set; }
 
@@ -19,5 +18,7 @@ namespace Vote.Models
         public DateTime End_dateVoting { get; set; } = DateTime.Now;
 
         public string[] listOptions = new string[5];
+
+
     }
 }

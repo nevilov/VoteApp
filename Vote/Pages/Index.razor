@@ -9,7 +9,8 @@
     </div>
     <div class="vote info">
         @foreach (var vote in votings) {
-            <div class="container" @onclick ="VoteInfo">
+        <a href='VoteInfo/@vote.voteID'>
+            <div class="container">
                 <div class="row">
                     <div class="col-sm">
                         <b>Title:</b> @vote.TitleVoting
@@ -19,9 +20,10 @@
                     </div>
                     <div class="col-sm">
                         <b>End Vote:</b> @vote.End_dateVoting
-</div>
+                    </div>
                 </div>
             </div>
+        </a>
         }
     </div>
 </div>
@@ -50,7 +52,7 @@
     private List<Vote.Models.OptionVoting> votings = new List<Models.OptionVoting>();
 
     protected override async Task OnInitializedAsync() {
-        votings = await Http.GetFromJsonAsync<List<Vote.Models.OptionVoting>>("https://localhost:5001/api/VoteInfoes"); // Получаем данные из севрера
+        votings = await Http.GetFromJsonAsync<List<Vote.Models.OptionVoting>>("/api/voting"); // Получаем данные из севрера
     }
 }
 

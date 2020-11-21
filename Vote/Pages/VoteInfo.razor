@@ -1,14 +1,11 @@
-﻿@page "/VoteInfo"
+﻿@page "/VoteInfo/{id}"
 @inject NavigationManager NavigationManager
 @using System.Net.Http
 @inject HttpClient Http
+
 <h3>VoteInfo</h3>
 
 <div class="container">
-    
-
-
-
     <div class="VoteInfo topbar">
         <div class="VoteInfo title">
             MY AWESOME TITLE
@@ -22,7 +19,7 @@
             </div>
             <div class="VoteInfo link">
                 <MatButton Raised="true" Icon="favorite">Delete</MatButton>
-            </div>          
+            </div>
         </div>
     </div>
 
@@ -46,18 +43,19 @@
 
 <style>
     .VoteInfo.topbar {
-        display:flex;
+        display: flex;
     }
+
     .VoteInfo.details {
-        display:flex;
+        display: flex;
     }
+
     .VoteInfo.column {
         margin: 15px 30px 15px 0;
         box-shadow: 0 0 10px rgba(0,0,0,0.5);
         padding: 10px;
         width: 50%;
         word-wrap: break-word;
-
     }
 
     .VoteInfo.chat {
@@ -68,17 +66,20 @@
     }
 
     .VoteInfo.title {
-        display:flex;
-        width:50%;
+        display: flex;
+        width: 50%;
     }
+
     .VoteInfo.link {
         margin-right: 10px;
     }
-
 </style>
 
 
 
 @code {
+    [Parameter]
+    public string id { get; set; }
+
 
 }
