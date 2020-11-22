@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Vote.Models;
 
 namespace VoteServer.Controllers
@@ -21,7 +19,7 @@ namespace VoteServer.Controllers
 
         [HttpGet]
         public IEnumerable<OptionVoting> GetAll() {
-            return context.VoteInfos.Select(v=> new OptionVoting {
+            return context.VoteInfos.Select(v => new OptionVoting {
                 TitleVoting = v.TitleVoting,
                 DescriptionVoting = v.DescriptionVoting,
                 Start_dateVoting = v.Start_dateVoting,

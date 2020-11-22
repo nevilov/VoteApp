@@ -10,7 +10,7 @@ using VoteServer;
 namespace VoteServer.Migrations
 {
     [DbContext(typeof(VoteDBContext))]
-    [Migration("20201121165056_Initial")]
+    [Migration("20201122163104_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
