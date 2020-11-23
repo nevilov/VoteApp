@@ -41,10 +41,39 @@ namespace VoteServer.Controllers
                 End_dateVoting = model.End_dateVoting
 
             });
-
             await context.SaveChangesAsync();
 
             return Ok();
         }
+
+
+        // DELETE: api/VoteInfoes/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<VoteInfo>> DeleteVoteInfo(string id) {
+            var voteInfo = await context.VoteInfos.FindAsync(id);
+            if (voteInfo == null) {
+                return NotFound();
+            }
+
+            context.VoteInfos.Remove(voteInfo);
+            await context.SaveChangesAsync();
+
+            return voteInfo;
+        }
+
+        // GET: api/VoteInfoes/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<VoteInfo>> GetVoteInfo(string id) {
+            var voteInfo = await context.VoteInfos.FindAsync(id);
+
+            if (voteInfo == null) {
+                return NotFound();
+            }
+
+            return voteInfo;
+        }
+
+
+
     }
 }
