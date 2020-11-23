@@ -2,13 +2,14 @@
 @inject NavigationManager NavigationManager
 @using System.Net.Http
 @inject HttpClient Http
+@using Vote.Models  
 
 <h3>VoteInfo</h3>
 
 <div class="container">
     <div class="VoteInfo topbar">
         <div class="VoteInfo title">
-            MY AWESOME TITLE
+            @voting.TitleVoting
         </div>
         <div class="VoteInfo title">
             <div class="VoteInfo link">
@@ -80,6 +81,11 @@
 @code {
     [Parameter]
     public string id { get; set; }
+
+    OptionVoting voting = new OptionVoting();
+    protected override async Task OnInitializedAsync() {
+        voting = await Http.GetFromJsonAsync<OptionVoting>("/api/VoteInfoes/" + id);
+    }
 
 
 }

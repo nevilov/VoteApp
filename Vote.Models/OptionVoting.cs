@@ -5,7 +5,7 @@ namespace Vote.Models
 {
     public class OptionVoting
     {
-        public string voteID { get; set; }
+        public string Id { get; set; }
 
         [Required]
         public string TitleVoting { get; set; }
