@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -73,6 +74,33 @@ namespace VoteServer.Controllers
             return voteInfo;
         }
 
+        // PUT: api/VoteInfoes/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutVoteInfo(string id, VoteInfo voteInfo) {
+            if (id != voteInfo.TitleVoting) {
+                return BadRequest();
+            }
+
+            context.Entry(voteInfo).State = EntityState.Modified;
+
+            try {
+                await context.SaveChangesAsync();
+            } catch (DbUpdateConcurrencyException) {
+                if (!VoteInfoExists(id)) {
+                    return NotFound();
+                } else {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        private bool VoteInfoExists(string id) {
+            return context.VoteInfos.Any(e => e.TitleVoting == id);
+        }
 
 
     }
