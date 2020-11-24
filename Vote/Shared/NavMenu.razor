@@ -1,52 +1,18 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">Vote</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+﻿@inject NavigationManager NavigationManager
+<div class="sidebar">
+    <div class="profile_info">
+        <img src="/images/user.png" class="profile_image" alt="">
+        <h4>Name</h4>
+    </div>
+    <a href=""><i class="fas fa-vote-yea"></i><span>Main</span></a>
+    <a href="/CreateVoting"><i class="fas fa-plus"></i><span>Create Vote</span></a>
+    <a href="#"><i class="fas fa-info-circle"></i><span>About</span></a>
+    <MatButton Raised="true" Icon="favorite" @onclick="GoToGitlab">GitLab</MatButton>
 </div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <li class="nav-item px-3">
-        <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-            <span class="oi oi-home" aria-hidden="true"></span> Home
-        </NavLink>
+@code{
+    private void GoToGitlab() {
+        NavigationManager.NavigateTo("https://gitlab.com/nevilov/vote-blazor-webassembly", false);
 
-        <NavLink class="nav-link" href="#" @onclick="OpenSubMenu">
-            <span class="oi oi-list-rich" aria-hidden="false"></span> Vote
-        </NavLink>
-        <ul class="sub-menu">
-                <li class="nav-item px-3"  style="display:@openclose">
-                    <NavLink class="nav-link" href="#">
-                        <span class="oi oi-list-rich" aria-hidden="true"></span> Add new
-                    </NavLink>
-                </li>
-
-                <li class="nav-item px-3" style="display:@openclose">
-                    <NavLink class="nav-link" href="#">
-                        <span class="oi oi-list-rich" aria-hidden="true"></span> My votes
-                    </NavLink>
-                </li>
-        </ul>
-    </li>
-    <ul class="nav flex-column">
-    </ul>
-</div>
-
-@code {
-    string openclose = "none";
-
-    void OpenSubMenu() {
-        if (openclose == "none")
-            openclose = "block";
-        else
-            openclose = "none";
-    }
-
-    private bool collapseNavMenu = true;
-
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu() {
-        collapseNavMenu = !collapseNavMenu;
     }
 }
