@@ -2,6 +2,7 @@
 @inject NavigationManager NavigationManager
 @using System.Net.Http
 @inject HttpClient Http
+
 @using Vote.Models
 
 <h3>VoteInfo</h3>
@@ -41,11 +42,12 @@
                 <div class="VoteInfo date" >
                     <div class="VotInfo dateElement">
                         <p>Start Date</p>
-                        @voting.Start_dateVoting
+                        @voting.Start_dateVoting.ToString("dd/MM/yyyy")
+
                     </div>
                     <div class="VotInfo dateElement">
                         <p>End Date</p>
-                        @voting.End_dateVoting
+                        @voting.End_dateVoting.ToString("dd/MM/yyyy")
                     </div>
                 </div>
              </div>
@@ -79,7 +81,7 @@
     .VoteInfo.date{
         display: flex;
     }
-    VoteInfo.elements{
+    .VoteInfo.elements{
         padding-bottom: 10px;
     }
 </style>
@@ -91,14 +93,18 @@
     [Parameter]
     public string id { get; set; }
 
-    OptionVoting voting = new OptionVoting();
+    public OptionVoting voting = new OptionVoting();
+
+
     protected override async Task OnInitializedAsync() {
         voting = await Http.GetFromJsonAsync<OptionVoting>("/api/VoteInfoes/" + id);
     }
 
 
 
-    
+
+
+
 
 
 }

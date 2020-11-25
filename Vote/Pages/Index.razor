@@ -9,19 +9,19 @@
     </div>
     <div class="vote info">
         @foreach (var vote in votings) {
-            <div class="container" @onclick="(() => VoteInfo(vote.Id))">
-                <div class="row">
-                    <div class="col-sm">
-                        <b>Title:</b> @vote.TitleVoting
-                    </div>
-                    <div class="col-sm">
-                        <b>Desciption:</b> @vote.DescriptionVoting
-                    </div>
-                    <div class="col-sm">
-                        <b>End Vote:</b> @vote.End_dateVoting
-                    </div>
+        <div class="container" @onclick="(() => VoteInfo(vote.Id))">
+            <div class="row">
+                <div class="col-sm">
+                    <b>Title:</b> @vote.TitleVoting
+                </div>
+                <div class="col-sm">
+                    <b>Desciption:</b> @vote.DescriptionVoting
+                </div>
+                <div class="col-sm">
+                    <b>End Vote:</b> @vote.End_dateVoting.ToString("dd.MM.yyyy")
                 </div>
             </div>
+        </div>
         }
     </div>
 </div>
