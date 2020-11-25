@@ -270,6 +270,13 @@ app {
     margin-right: 10px;
 }
 
+.vote.info .container{
+    padding:16px;
+}
+
+p {
+    margin-bottom: 5px;
+}
 
 
 @media (max-width: 767.98px) {
