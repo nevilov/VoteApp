@@ -1,0 +1,21 @@
+# Сборка бэкенда
+build backend:
+    image: mcr.microsoft.com/dotnet/sdk:5.0
+    stage: build
+    only:
+      changes:
+        - "*"
+        - VoteServer/**
+    script:
+      - cd VoteServer
+      - echo "Building backend..."
+      - dotnet restore
+      - cd VoteServer
+      - dotnet build -c Release
+      - dotnet publish -c Release --no-build
+      - echo "Build successful"
+    artifacts:
+      expire_in: 1 hour
+      paths:
+          - backend/src/Gradeo.Api/bin/Release/
+

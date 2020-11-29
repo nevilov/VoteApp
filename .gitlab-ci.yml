@@ -5,6 +5,4 @@ stages:
     - deploy
 
 include:
-  - local: '/app/ci.yml'
-  - local: '/backend/ci.yml'
-  - local: '/infrastructure/deployment.yml'
+  - local: '/voteserver/ci.yml'
