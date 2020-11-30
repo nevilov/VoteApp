@@ -14,8 +14,4 @@ build backend:
       - dotnet build -c Release
       - dotnet publish -c Release --no-build
       - echo "Build successful"
-    artifacts:
-      expire_in: 1 hour
-      paths:
-          - backend/src/Gradeo.Api/bin/Release/
 
