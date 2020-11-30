@@ -11,7 +11,9 @@ build backend:
       - echo "Building backend..."
       - dotnet restore
       - cd VoteServer
+      - echo "Continue ..."
       - dotnet build -c Release
+      - echo "Continue ..."
       - dotnet publish -c Release --no-build
       - echo "Build successful"
 
