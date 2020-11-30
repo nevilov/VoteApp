@@ -2,6 +2,9 @@
 @inject NavigationManager NavigationManager
 @using System.Net.Http
 @inject HttpClient Http
+<MudBadge  Content = "3"  Color = "Color.Primary"  Overlap = " true " > 
+    <MudIcon  Icon = "@Icons.Material.Email"  Color = "Color.Default" /> 
+</MudBadge >
 
 <div class="main page">
     <div class="main_voting">
@@ -9,19 +12,19 @@
     </div>
     <div class="vote info">
         @foreach (var vote in votings) {
-            <div class="container" @onclick ="VoteInfo">
-                <div class="row">
-                    <div class="col-sm">
-                        <b>Title:</b> @vote.TitleVoting
-                    </div>
-                    <div class="col-sm">
-                        <b>Desciption:</b> @vote.DescriptionVoting
-                    </div>
-                    <div class="col-sm">
-                        <b>End Vote:</b> @vote.End_dateVoting
-</div>
+        <div class="container" @onclick="(() => VoteInfo(vote.Id))">
+            <div class="row">
+                <div class="col-sm">
+                    <b>Title:</b> @vote.TitleVoting
+                </div>
+                <div class="col-sm">
+                    <b>Desciption:</b> @vote.DescriptionVoting
+                </div>
+                <div class="col-sm">
+                    <b>End Vote:</b> @vote.End_dateVoting.ToString("dd.MM.yyyy")
                 </div>
             </div>
+        </div>
         }
     </div>
 </div>
@@ -31,10 +34,10 @@
         margin: 15px 0 15px 0;
         box-shadow: 0 0 10px rgba(0,0,0,0.5);
         padding: 10px;
-
         cursor: pointer;
     }
-    
+
+
 </style>
 
 
@@ -43,14 +46,14 @@
         NavigationManager.NavigateTo("CreateVoting");
     }
 
-    public void VoteInfo() {
-        NavigationManager.NavigateTo("VoteInfo");
+    public void VoteInfo(string id) {
+        NavigationManager.NavigateTo("VoteInfo/"+id);
     }
 
     private List<Vote.Models.OptionVoting> votings = new List<Models.OptionVoting>();
 
     protected override async Task OnInitializedAsync() {
-        votings = await Http.GetFromJsonAsync<List<Vote.Models.OptionVoting>>("https://localhost:5001/api/VoteInfoes"); // Получаем данные из севрера
+        votings = await Http.GetFromJsonAsync<List<Vote.Models.OptionVoting>>("/api/VoteInfoes/"); // Получаем данные из севрера
     }
 }
 

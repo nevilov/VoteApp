@@ -32,8 +32,11 @@ namespace VoteServer
             });
 
             /*DB*/
+            // Adding Entity Framework
             services.AddDbContext<VoteDBContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("VoteDBContext")));
+                options.UseNpgsql(
+                    Configuration.GetConnectionString("DefaultConnection")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

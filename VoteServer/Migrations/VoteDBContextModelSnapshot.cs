@@ -2,8 +2,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using VoteServer;
 
 namespace VoteServer.Migrations
@@ -15,26 +15,28 @@ namespace VoteServer.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityColumns()
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
+                .HasAnnotation("ProductVersion", "3.1.7")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("VoteServer.VoteInfo", b =>
                 {
-                    b.Property<string>("TitleVoting")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
 
                     b.Property<string>("DescriptionVoting")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("End_dateVoting")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime>("Start_dateVoting")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("TitleVoting");
+                    b.Property<string>("TitleVoting")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
 
                     b.ToTable("VoteInfos");
                 });

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Vote.Models;
 using VoteServer;
 
 namespace VoteServer.Controllers
@@ -76,14 +77,25 @@ namespace VoteServer.Controllers
         // POST: api/VoteInfoes
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<VoteInfo>> PostVoteInfo(VoteInfo voteInfo)
-        {
-            _context.VoteInfos.Add(voteInfo);
+        [HttpPost("create")]
+        public async Task<IActionResult> Create(OptionVoting model) {
+
+            if (model == null) {
+                return BadRequest();
+            }
+
+            _context.VoteInfos.Add(new VoteInfo {
+                TitleVoting = model.TitleVoting,
+                DescriptionVoting = model.DescriptionVoting,
+                Start_dateVoting = model.Start_dateVoting,
+                End_dateVoting = model.End_dateVoting
+
+            });
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetVoteInfo", new { id = voteInfo.TitleVoting }, voteInfo);
+            return Ok();
         }
+
 
         // DELETE: api/VoteInfoes/5
         [HttpDelete("{id}")]

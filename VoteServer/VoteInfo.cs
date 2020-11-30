@@ -9,9 +9,9 @@ namespace VoteServer
 {
     public class VoteInfo
     {
-       [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-       [Key]
-    
+
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+
         public string TitleVoting { get; set; }
 
         public string DescriptionVoting { get; set; }
@@ -20,6 +20,7 @@ namespace VoteServer
 
         public DateTime End_dateVoting { get; set; } = DateTime.Now;
 
+        [NotMapped]
         public string[] listOptions = new string[5];
     }
 }
