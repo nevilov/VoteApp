@@ -3,12 +3,12 @@ before_script:
   - dotnet restore
   
 VoteWASM Build:
-  stage: build
+  stage: deploy
   script:
   - mkdir public
   - dotnet publish -c Release -o output
   - echo Done
-  #- cp -a ./Vote/output/Vote/dist/* ./public
+  - cp -a /output/Vote/dist/* ./public
   artifacts:
     paths:
     - public
