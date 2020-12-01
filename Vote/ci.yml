@@ -1,22 +1,16 @@
-Build BlazorWASML:
-    image: mcr.microsoft.com/dotnet/sdk:5.0
-    variables:
-      buildConfiguration: 'Release'
-      vmImageName: 'ubuntu-latest'
-    stages:
-    - stage: Build
-      displayName: Build stage
+image: mcr.microsoft.com/dotnet/sdk:5.0
 
-      jobs:
-      - job: Build
-        displayName: Build
-
-        pool:
-          vmImage: $(vmImageName)
-
-        steps:
-        - task: DotNetCoreCLI@2
-          displayName: Build Server
-          inputs:
-            command: 'build'
-            projects: '**/Vote.csproj'
+before_script:
+  - dotnet restore
+  
+pages:
+  stage: deploy
+  script:
+  - mkdir public
+  - dotnet publish -c Release -o output
+  - cp -a ./output/Vote/dist/* ./public
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
