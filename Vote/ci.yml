@@ -9,4 +9,10 @@ VoteWASM Build:
   - dotnet publish -c Release -o output
   - echo Done
   #- cp -a ./Vote/output/Vote/dist/* ./public
+  artifacts:
+    paths:
+    - public
+  only:
+    refs:
+    - master
 
