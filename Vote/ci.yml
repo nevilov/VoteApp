@@ -1,17 +1,15 @@
-deploy blazor:
-    image: mcr.microsoft.com/dotnet/sdk:5.0
-
-    before_script:
-      - dotnet restore
-      
-    pages:
-      stage: deploy
-      script:
-      - mkdir public
-      - dotnet publish -c Release -o output
-      - cp -a ./output/Vote/dist/* ./public
-      artifacts:
-        paths:
-        - public
-      only:
-      - master
+image: mcr.microsoft.com/dotnet/sdk:5.0
+before_script:
+  - dotnet restore
+  
+pages:
+  stage: deploy
+  script:
+  - mkdir public
+  - dotnet publish -c Release -o output
+  - cp -a ./Vote/output/Vote/dist/* ./public
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
