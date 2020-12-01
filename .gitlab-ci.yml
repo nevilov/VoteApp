@@ -6,4 +6,3 @@ stages:
 
 include:
   - local: '/VoteServer/ci.yml'
-  - local: '/Vote/ci.yml'
