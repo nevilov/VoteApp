@@ -8,7 +8,7 @@ VoteWASM Build:
   - mkdir public
   - dotnet publish -c Release -o output
   - echo Done
-  - cp -a /output/Vote/dist/* ./public
+  - cp -a output/Vote/dist/* ./public
   artifacts:
     paths:
     - public
