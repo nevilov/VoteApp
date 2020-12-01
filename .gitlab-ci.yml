@@ -5,4 +5,5 @@ stages:
     - deploy
 
 include:
+  - local: '/VoteServer/ci.yml'
   - local: '/Vote/ci.yml'
