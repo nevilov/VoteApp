@@ -4,6 +4,10 @@ before_script:
   
 VoteWASM Build:
   stage: build
+  only:
+    changes:
+      - "*"
+      - Vote/**
   script:
   - mkdir public
   - dotnet publish -c Release -o output
