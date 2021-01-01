@@ -6,6 +6,7 @@ html, body {
     padding: 0;
     font-family: 'Comfortaa', cursive;
 }
+
 label {
     display: block;
     margin-bottom: 0;
@@ -270,8 +271,8 @@ app {
     margin-right: 10px;
 }
 
-.vote.info .container{
-    padding:16px;
+.vote.info .container {
+    padding: 16px;
 }
 
 p {
@@ -284,6 +285,7 @@ p {
         max-width: 1300px;
     }
 }
+
 @media (max-width: 767.98px) {
     .main .top-row:not(.auth) {
         display: none;
