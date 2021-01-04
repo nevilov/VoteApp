@@ -3,7 +3,6 @@ WORKDIR /src
 COPY Vote.csproj .
 RUN dotnet restore "Vote.csproj"
 COPY . .
-RUN dotnet build "Vote.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "Vote.csproj" -c Release -o /app/publish
