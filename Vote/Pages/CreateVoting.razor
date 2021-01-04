@@ -1,0 +1,161 @@
+﻿@page "/CreateVoting"
+@using System.Net.Http
+@inject NavigationManager NavigationManager
+@inject HttpClient Http
+<div class="create_voting">
+    <div class="input voting">
+        <MatTextField @bind-Value="@My" Label="Standard" Outlined="true" FullWidth="true"></MatTextField>
+    </div>
+</div>
+<div>
+    <EditForm Model="@Options" OnValidSubmit="HandleValidSubmit" OnInvalidSubmit="HandleInValidSubmit">
+        <div class="alert @StatusClass">@StatusMessage</div>
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <h2>New voting</h2>
+        <div class="input-group mb-3">
+            <div class="create_voting">
+                <div class="input voting">
+                    <input class="form-control"
+                           @bind="Options.TitleVoting"
+                           type="text"
+                           placeholder="Title"
+                           aria-describedby="button-addon1"
+                           maxlength="50" />
+                    <ValidationMessage For="@(() => Options.TitleVoting)" />
+                </div>
+                <div class="input voting">
+                    <textarea class="form-control"
+                              @bind="Options.DescriptionVoting"
+                              id="exampleFormControlTextarea1"
+                              placeholder="Description"
+                              rows="3"
+                              maxlength="250" />
+                    <ValidationMessage For="@(() => Options.DescriptionVoting)" />
+                </div>
+                <div class="input voting">
+                    <MatDatePicker @bind-Value="Options.Start_dateVoting"
+                                   Label="Start voting"
+                                   Required="true"
+                                   TValue="DateTime"
+                                   FullWidth="true"
+                                   Class="form-control"
+                                   EnableTime="true"
+                                   Minimum="@DateTime.Now.AddDays(1)"
+                                   Maximum="@DateTime.Now.AddDays(1000)" />
+                </div>
+
+                <div class="input voting">
+                    <MatDatePicker @bind-Value="Options.End_dateVoting"
+                                   Label="End voting"
+                                   Required="true"
+                                   TValue="DateTime"
+                                   FullWidth="true"
+                                   Class="form-control"
+                                   EnableTime="true"
+                                   Minimum="@DateTime.Now.AddDays(1)"
+                                   Maximum="@DateTime.Now.AddDays(1000)" />
+
+                </div>
+                <div class="input voting">
+                    <input class="form-control"
+                           type="text"
+                           @bind="Options.listOptions[0]"
+                           placeholder="Voting Option"
+                           maxlength="50" />
+                </div>
+                @if (optionCount > 1) {
+                    <div class="input voting">
+                        <input class="form-control"
+                               type="text"
+                               @bind="Options.listOptions[1]"
+                               placeholder="Voting Option"
+                               maxlength="50" />
+                    </div>
+                }
+                @if (optionCount > 2) {
+                    <div class="input voting">
+                        <input class="form-control"
+                               type="text"
+                               @bind="Options.listOptions[2]"
+                               placeholder="Voting Option"
+                               maxlength="50" />
+                    </div>
+                }
+                @if (optionCount > 3) {
+                    <div class="input voting">
+                        <input class="form-control"
+                               type="text"
+                               @bind="Options.listOptions[3]"
+                               placeholder="Voting Option"
+                               maxlength="50" />
+                    </div>
+                }
+                @if (optionCount > 4) {
+                    <div class="input voting">
+                        <input class="form-control"
+                               type="text"
+                               @bind="Options.listOptions[4]"
+                               placeholder="Voting Option"
+                               maxlength="50" />
+                    </div>
+                }
+
+
+                <div class="Option button">
+                    <button type="button"
+                            style="margin-left:10px; width: 25%;"
+                            @onclick="BtnAddOption"
+                            class="btn btn-outline-secondary">
+                        Add Option
+                    </button>
+
+                    @*<button type="button"
+                                style="margin-left:10px; width: 25%;"
+                                @onclick="BtnAddOption"
+                                class="btn btn-outline-danger">
+                            Delete Option
+                        </button>*@
+
+                </div>
+                <div class="create voting button">
+                    <button type="submit" class="btn btn-success" style="font-size: 20px;">Save</button>
+                </div>
+            </div>
+        </div>
+    </EditForm>
+</div>
+
+
+@code {
+    private OptionVoting Options = new OptionVoting();
+
+    string My = "s";
+
+    public string StatusMessage;
+    public string StatusClass;
+
+
+    public async Task HandleValidSubmit() {
+        //StatusClass = "alert-info";
+        //StatusMessage = DateTime.Now + " HandleValid submit";
+        var result = await Http.PostAsJsonAsync("/api/VoteInfoes/create", Options);
+        NavigationManager.NavigateTo("");
+
+    }
+
+    public void HandleInValidSubmit() {
+        StatusClass = "alert-info";
+        StatusMessage = DateTime.Now + " HandleInValid submit";
+    }
+
+
+
+    public int optionCount = 1;
+    public void BtnAddOption() {
+        optionCount++;
+    }
+
+
+
+}

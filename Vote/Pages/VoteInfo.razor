@@ -1,0 +1,102 @@
+﻿@page "/VoteInfo/{id}"
+@inject NavigationManager NavigationManager
+@using System.Net.Http
+@inject HttpClient Http
+
+
+<h3>VoteInfo</h3>
+<h3>Your id's is @voting.Id</h3>
+
+<div class="container">
+    <div class="VoteInfo topbar">
+        <div class="VoteInfo title">
+            <h4>@voting.TitleVoting</h4>
+        </div>
+
+
+        <div class="VoteInfo title">
+            <div class="VoteInfo link">
+                <MatButton Raised="true" Icon="person_add" Style="color:aqua">Invite</MatButton>
+            </div>
+            <div class="VoteInfo link">
+                <MatButton Raised="true" Icon="border_color">Edit</MatButton>
+            </div>
+            <div class="VoteInfo link">
+                <MatButton Raised="true" Icon="delete" Style="color:red">Delete</MatButton>
+            </div>
+        </div>
+    </div>
+
+    <div class="VoteInfo details">
+        <div class="VoteInfo column">
+            <p>Details</p>
+            <div class="VoteInfo elements">
+                <div class="VoteInfo description">
+                    <p class="text-muted" style="font-size:12px; margin-bottom:0;">Description</p>
+                    @voting.DescriptionVoting
+                </div>
+            </div>
+
+            <div class="VoteInfo elements">
+                <div class="VoteInfo date" >
+                    <div class="VotInfo dateElement">
+                        <p>Start Date</p>
+                        @voting.Start_dateVoting.ToString("dd/MM/yyyy")
+
+                    </div>
+                    <div class="VotInfo dateElement">
+                        <p>End Date</p>
+                        @voting.End_dateVoting.ToString("dd/MM/yyyy")
+                    </div>
+                </div>
+             </div>
+        </div>
+
+        <div class="VoteInfo column">
+            <p>Voting</p>
+            <div class="VoteInfo options">
+                @for (int i = 0; i < voting.listOptions.Length; ++i) {
+                    <div class="VoteInfo votes">
+                        @voting.listOptions[i]
+                    </div>
+                }
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="VoteInfo chat">
+        CHAT
+    </div>
+
+
+</div>
+
+<style>
+    .VotInfo.dateElement{
+        width:50%;
+    }
+    .VoteInfo.date{
+        display: flex;
+    }
+    .VoteInfo.elements{
+        padding-bottom: 10px;
+    }
+</style>
+
+
+
+
+@code {
+    [Parameter]
+    public string id { get; set; }
+
+    public OptionVoting voting = new OptionVoting();
+
+
+    protected override async Task OnInitializedAsync() {
+        voting = await Http.GetFromJsonAsync<OptionVoting>("/api/VoteInfoes/" + id);
+    }
+
+}

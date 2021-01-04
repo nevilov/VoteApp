@@ -1,0 +1,30 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+
+<input type="checkbox" id="check">
+<!--header area start-->
+<header>
+    <label for="check">
+        <i class="fas fa-bars" id="sidebar_btn" style="line-height: 10px;"></i>
+    </label>
+    <div class="left_area">
+        <h3>Vote <span>App</span></h3>
+    </div>
+    <div class="right_area">
+        <a href="#" class="logout_btn">Login</a>
+    </div>
+    <div class="right_area">
+        <a href="#" class="logout_btn">Register</a>
+    </div>
+</header>
+
+<NavMenu />
+<!--sidebar end-->
+
+<div class="content">
+    @Body
+</div>
+
+
+@code{ }

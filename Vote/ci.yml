@@ -1,0 +1,19 @@
+image: mcr.microsoft.com/dotnet/sdk:5.0
+before_script:
+  - dotnet restore
+  
+VoteWASM Build:
+  stage: build
+  only:
+    changes:
+      - "*"
+      - Vote/**
+  script:
+  - mkdir public
+  - dotnet publish -c Release -o output
+  - echo Done
+  #- cp -a output/Vote/dist/* ./public
+  artifacts:
+    paths:
+    - public
+

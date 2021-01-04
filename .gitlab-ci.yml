@@ -1,0 +1,9 @@
+stages:
+    - build
+    - test
+    - dockerize
+    - deploy
+
+include:
+  - local: '/VoteServer/ci.yml'
+  - local: '/Vote/ci.yml'
