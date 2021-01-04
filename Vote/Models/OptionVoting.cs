@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Vote.Models
+namespace Vote
 {
     public class OptionVoting
     {
