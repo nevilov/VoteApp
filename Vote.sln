@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vote", "Vote\Vote.csproj", "{A38D9AF6-2C47-48C8-9F0B-9FD972A7539A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vote.Models", "Vote.Models\Vote.Models.csproj", "{BC0808F7-8142-4445-A9E6-1CB16B747BFE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoteServer", "VoteServer\VoteServer.csproj", "{C79380EA-0358-4DB7-B23A-E326CEF39AC7}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{A38D9AF6-2C47-48C8-9F0B-9FD972A7539A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A38D9AF6-2C47-48C8-9F0B-9FD972A7539A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A38D9AF6-2C47-48C8-9F0B-9FD972A7539A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC0808F7-8142-4445-A9E6-1CB16B747BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC0808F7-8142-4445-A9E6-1CB16B747BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC0808F7-8142-4445-A9E6-1CB16B747BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC0808F7-8142-4445-A9E6-1CB16B747BFE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C79380EA-0358-4DB7-B23A-E326CEF39AC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C79380EA-0358-4DB7-B23A-E326CEF39AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C79380EA-0358-4DB7-B23A-E326CEF39AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU

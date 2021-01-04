@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Vote.Models;
 using VoteServer;
 
 namespace VoteServer.Controllers
@@ -21,14 +20,12 @@ namespace VoteServer.Controllers
             _context = context;
         }
 
-        // GET: api/VoteInfoes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<VoteInfo>>> GetVoteInfos()
         {
             return await _context.VoteInfos.ToListAsync();
         }
 
-        // GET: api/VoteInfoes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<VoteInfo>> GetVoteInfo(string id)
         {
@@ -42,9 +39,6 @@ namespace VoteServer.Controllers
             return voteInfo;
         }
 
-        // PUT: api/VoteInfoes/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutVoteInfo(string id, VoteInfo voteInfo)
         {
@@ -78,7 +72,7 @@ namespace VoteServer.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost("create")]
-        public async Task<IActionResult> Create(OptionVoting model) {
+        public async Task<IActionResult> Create(VoteInfo model) {
 
             if (model == null) {
                 return BadRequest();
@@ -97,7 +91,6 @@ namespace VoteServer.Controllers
         }
 
 
-        // DELETE: api/VoteInfoes/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<VoteInfo>> DeleteVoteInfo(string id)
         {
