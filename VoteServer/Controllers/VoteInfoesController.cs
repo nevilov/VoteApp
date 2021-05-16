@@ -20,14 +20,12 @@ namespace VoteServer.Controllers
             _context = context;
         }
 
-        // GET: api/VoteInfoes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<VoteInfo>>> GetVoteInfos()
         {
             return await _context.VoteInfos.ToListAsync();
         }
 
-        // GET: api/VoteInfoes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<VoteInfo>> GetVoteInfo(string id)
         {
@@ -41,17 +39,9 @@ namespace VoteServer.Controllers
             return voteInfo;
         }
 
-        // PUT: api/VoteInfoes/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutVoteInfo(string id, VoteInfo voteInfo)
         {
-            if (id != voteInfo.TitleVoting)
-            {
-                return BadRequest();
-            }
-
             _context.Entry(voteInfo).State = EntityState.Modified;
 
             try
